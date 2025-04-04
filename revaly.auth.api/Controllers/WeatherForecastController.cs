@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace revaly_auth_api.Controllers
+namespace revaly.auth.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "revaly.auth.API", "revaly.auth.api\revaly.auth.API.csproj", "{6D43EB6E-6937-49D6-A4DB-F4B904409CE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "revaly.auth.Application", "revaly.auth.application\revaly.auth.Application.csproj", "{328D6496-481D-41C6-8515-FE2558E6C231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "revaly.auth.CrossCutting", "revaly.auth.CrossCutting\revaly.auth.CrossCutting.csproj", "{E02362C1-CB98-4898-B976-B54436225B85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "revaly.auth.Domain", "revaly.auth.Domain\revaly.auth.Domain.csproj", "{D6EDDE33-6469-4548-AA79-39864F1EA24E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "revaly.auth.Infrastructure", "revaly.auth.Infrastructure\revaly.auth.Infrastructure.csproj", "{CE4E673C-70E8-4DD8-A2EB-68667650BB90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "revaly.auth.Tests", "revaly.auth.Tests\revaly.auth.Tests.csproj", "{109E3751-FE3F-48D1-AD76-55D89A44F563}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D43EB6E-6937-49D6-A4DB-F4B904409CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D43EB6E-6937-49D6-A4DB-F4B904409CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D43EB6E-6937-49D6-A4DB-F4B904409CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D43EB6E-6937-49D6-A4DB-F4B904409CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328D6496-481D-41C6-8515-FE2558E6C231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328D6496-481D-41C6-8515-FE2558E6C231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328D6496-481D-41C6-8515-FE2558E6C231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328D6496-481D-41C6-8515-FE2558E6C231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02362C1-CB98-4898-B976-B54436225B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E02362C1-CB98-4898-B976-B54436225B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E02362C1-CB98-4898-B976-B54436225B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E02362C1-CB98-4898-B976-B54436225B85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6EDDE33-6469-4548-AA79-39864F1EA24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EDDE33-6469-4548-AA79-39864F1EA24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6EDDE33-6469-4548-AA79-39864F1EA24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6EDDE33-6469-4548-AA79-39864F1EA24E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4E673C-70E8-4DD8-A2EB-68667650BB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4E673C-70E8-4DD8-A2EB-68667650BB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4E673C-70E8-4DD8-A2EB-68667650BB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4E673C-70E8-4DD8-A2EB-68667650BB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{109E3751-FE3F-48D1-AD76-55D89A44F563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{109E3751-FE3F-48D1-AD76-55D89A44F563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{109E3751-FE3F-48D1-AD76-55D89A44F563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{109E3751-FE3F-48D1-AD76-55D89A44F563}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92F59302-2B71-47A1-9BA5-64C73E509528}
+	EndGlobalSection
+EndGlobal

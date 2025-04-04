@@ -1,4 +1,4 @@
-namespace revaly_auth_api
+namespace revaly.auth.api
 {
     public class WeatherForecast
     {
