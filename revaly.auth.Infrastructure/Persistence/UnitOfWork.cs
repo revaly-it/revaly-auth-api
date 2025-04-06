@@ -1,15 +1,20 @@
-﻿
-using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using revaly.auth.Domain.Interfaces.IUnitOfWork;
+using revaly.auth.Domain.Interfaces.Repositories.IUserRepository;
 using revaly.auth.Infrastructure.Context;
 
 namespace revaly.auth.Infrastructure.Persistence
 {
-    public class UnityOfWork(
-        MySQLContext mySQLContext    
-    )
+    public class UnitOfWork(
+        MySQLContext mySQLContext,
+        IUserRepository userRepository
+    ) : IUnitOfWork
     {
         private readonly MySQLContext _mySQLContext = mySQLContext;
+        public IUserRepository _userRepository = userRepository;
         private IDbContextTransaction _transaction;
+
+        public IUserRepository UserRepository => _userRepository;
 
         public async Task<int> CompleteAsync()
         {

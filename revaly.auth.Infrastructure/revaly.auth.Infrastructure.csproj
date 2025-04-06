@@ -23,4 +23,8 @@
     <ProjectReference Include="..\revaly.auth.Domain\revaly.auth.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\RegisterRepository\" />
+  </ItemGroup>
+
 </Project>
