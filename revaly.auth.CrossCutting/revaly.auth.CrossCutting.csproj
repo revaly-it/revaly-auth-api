@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="VaultService" Version="0.1.5" />
+		<PackageReference Include="VaultSharp" Version="1.17.5.1" />
+	</ItemGroup>
+
 </Project>
