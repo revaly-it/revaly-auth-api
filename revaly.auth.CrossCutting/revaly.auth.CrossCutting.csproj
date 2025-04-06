@@ -7,8 +7,13 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.3.efcore.9.0.0" />
 		<PackageReference Include="VaultService" Version="0.1.5" />
 		<PackageReference Include="VaultSharp" Version="1.17.5.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\revaly.auth.Infrastructure\revaly.auth.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>
