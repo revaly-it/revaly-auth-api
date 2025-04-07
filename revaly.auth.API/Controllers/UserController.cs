@@ -1,27 +1,28 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using revaly.auth.Application.Commands.LoginCommand;
+using revaly.auth.Application.Commands.AuthCommand.RegisterUserCommand;
 
 namespace revaly.auth.API.Controllers
 {
-
     /// <summary>
-    /// Auth Controller
+    /// User Controller
     /// </summary>
-    [Route("api/auth")]
+    [Route("api/user")]
     [ApiController]
-    public class LoginController(IMediator mediator) : ControllerBase
+    public class UserController(IMediator mediator) : ControllerBase
     {
         /// <summary>
-        /// Login
+        /// Register user 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginCommand request)
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterUserCommand request)
         {
             var result = await mediator.Send(request);
             return Ok(result);
         }
+
+
     }
 }
