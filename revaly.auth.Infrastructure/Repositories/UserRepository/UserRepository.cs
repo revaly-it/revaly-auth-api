@@ -37,13 +37,11 @@ namespace revaly.auth.Infrastructure.Repositories.UserRepository
         public async Task AddUserAsync(User user)
         {
             await _mySQLContext.Users.AddAsync(user);
-            await _mySQLContext.SaveChangesAsync();
         }
 
         public async Task UpdateUserAsync(User user)
         {
             _mySQLContext.Users.Update(user);
-            await _mySQLContext.SaveChangesAsync();
         }
 
         public async Task DeleteUserAsync(int id)
@@ -52,7 +50,6 @@ namespace revaly.auth.Infrastructure.Repositories.UserRepository
             if (user != null)
             {
                 _mySQLContext.Users.Remove(user);
-                await _mySQLContext.SaveChangesAsync();
             }
         }
     }

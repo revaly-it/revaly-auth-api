@@ -1,5 +1,4 @@
-﻿
-using MediatR;
+﻿using MediatR;
 using revaly.auth.Application.Commands.AuthCommand.RegisterUserCommand;
 using revaly.auth.Application.Models;
 using revaly.auth.Domain.Entities;
@@ -34,7 +33,6 @@ namespace revaly.auth.Application.Handlers.AuthCommandHandler.RegisterUserComman
                     CreatedAt = DateTime.UtcNow.AddHours(-3)
                 };
 
-                await _unitOfWork.BeginTransactionAsync();
                 await _unitOfWork.User.AddUserAsync(user);
                 await _unitOfWork.CompleteAsync();
 
@@ -44,7 +42,7 @@ namespace revaly.auth.Application.Handlers.AuthCommandHandler.RegisterUserComman
                     FullName = user.FullName,
                     Email = user.Email,
                     CreatedAt = user.CreatedAt
-                });
+                }, "User registered successfully.");
             }
             catch (Exception ex)
             {

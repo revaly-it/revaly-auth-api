@@ -12,9 +12,13 @@
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.3.efcore.9.0.0" />
 		<PackageReference Include="VaultService" Version="0.1.5" />
 		<PackageReference Include="VaultSharp" Version="1.17.5.1" />
+		<PackageReference Include="FluentValidation" Version="11.11.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\revaly.auth.application\revaly.auth.Application.csproj" />
 	  <ProjectReference Include="..\revaly.auth.Infrastructure\revaly.auth.Infrastructure.csproj" />
 	</ItemGroup>
 

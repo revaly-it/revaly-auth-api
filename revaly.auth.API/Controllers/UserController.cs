@@ -16,13 +16,11 @@ namespace revaly.auth.API.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterUserCommand request)
-        {
-            var result = await mediator.Send(request);
-            return Ok(result);
-        }
-
-
+    //    [HttpPost("register")]
+    //    public async Task<IActionResult> Register([FromBody] RegisterUserCommand request)
+    //    {
+    //        var result = await mediator.Send(request);
+    //        return Ok(result);
+    //    }
     }
 }
