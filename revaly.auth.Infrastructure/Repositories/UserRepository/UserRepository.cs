@@ -14,6 +14,11 @@ namespace revaly.auth.Infrastructure.Repositories.UserRepository
             _mySQLContext = mySQLContext;
         }
 
+        public async Task<bool> UserExistsAsync(string email)
+        {
+            return await _mySQLContext.Users.AnyAsync(u => u.Email == email);
+        }
+
         public async Task<User> GetUserByIdAsync(int id)
         {
             return await _mySQLContext.Users.FindAsync(id);

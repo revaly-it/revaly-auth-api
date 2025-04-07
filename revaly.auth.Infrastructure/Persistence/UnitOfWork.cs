@@ -14,7 +14,7 @@ namespace revaly.auth.Infrastructure.Persistence
         public IUserRepository _userRepository = userRepository;
         private IDbContextTransaction _transaction;
 
-        public IUserRepository UserRepository => _userRepository;
+        public IUserRepository User => _userRepository;
 
         public async Task<int> CompleteAsync()
         {
