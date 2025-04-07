@@ -19,7 +19,12 @@ namespace revaly.auth.Infrastructure.Repositories.UserRepository
             return await _mySQLContext.Users.AnyAsync(u => u.Email == email);
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<bool> UserExistsAsync(Guid id)
+        {
+            return await _mySQLContext.Users.AnyAsync(u => u.Id == id);
+        }
+
+        public async Task<User> GetUserByIdAsync(Guid id)
         {
             return await _mySQLContext.Users.FindAsync(id);
         }
@@ -44,7 +49,7 @@ namespace revaly.auth.Infrastructure.Repositories.UserRepository
             _mySQLContext.Users.Update(user);
         }
 
-        public async Task DeleteUserAsync(int id)
+        public async Task DeleteUserAsync(Guid id)
         {
             var user = await GetUserByIdAsync(id);
             if (user != null)
@@ -52,5 +57,6 @@ namespace revaly.auth.Infrastructure.Repositories.UserRepository
                 _mySQLContext.Users.Remove(user);
             }
         }
+
     }
 }

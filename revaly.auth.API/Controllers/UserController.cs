@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using revaly.auth.Application.Commands.AuthCommand.RegisterUserCommand;
+using revaly.auth.Application.Commands.UserCommand.UpdateUserCommand;
 
 namespace revaly.auth.API.Controllers
 {
@@ -12,15 +12,15 @@ namespace revaly.auth.API.Controllers
     public class UserController(IMediator mediator) : ControllerBase
     {
         /// <summary>
-        /// Register user 
+        /// Update User
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-    //    [HttpPost("register")]
-    //    public async Task<IActionResult> Register([FromBody] RegisterUserCommand request)
-    //    {
-    //        var result = await mediator.Send(request);
-    //        return Ok(result);
-    //    }
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateUserCommand request)
+        {
+            var result = await mediator.Send(request);
+            return Ok(result);
+        }
     }
 }

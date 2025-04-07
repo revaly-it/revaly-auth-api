@@ -6,11 +6,12 @@ namespace revaly.auth.Domain.Interfaces.Repositories.IUserRepository
     public interface IUserRepository
     {
         Task<bool> UserExistsAsync(string email);
-        Task<User> GetUserByIdAsync(int id);
+        Task<bool> UserExistsAsync(Guid id);
+        Task<User> GetUserByIdAsync(Guid id);
         Task<User> GetUserByEmailAsync(string email);
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task AddUserAsync(User user);
         Task UpdateUserAsync(User user);
-        Task DeleteUserAsync(int id);
+        Task DeleteUserAsync(Guid id);
     }
 }
