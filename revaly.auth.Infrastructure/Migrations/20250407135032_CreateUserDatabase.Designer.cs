@@ -12,7 +12,7 @@ using revaly.auth.Infrastructure.Context;
 namespace revaly.auth.Infrastructure.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20250406182412_CreateUserDatabase")]
+    [Migration("20250407135032_CreateUserDatabase")]
     partial class CreateUserDatabase
     {
         /// <inheritdoc />
@@ -24,35 +24,6 @@ namespace revaly.auth.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
-
-            modelBuilder.Entity("revaly.auth.Domain.Entities.RefreshToken", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
-                        .HasColumnName("Id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("CreatedAt");
-
-                    b.Property<DateTime>("ExpiresAt")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("ExpiresAt");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("longtext")
-                        .HasColumnName("Token");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("RefreshTokens");
-                });
 
             modelBuilder.Entity("revaly.auth.Domain.Entities.User", b =>
                 {
@@ -93,22 +64,6 @@ namespace revaly.auth.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("revaly.auth.Domain.Entities.RefreshToken", b =>
-                {
-                    b.HasOne("revaly.auth.Domain.Entities.User", "User")
-                        .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("revaly.auth.Domain.Entities.User", b =>
-                {
-                    b.Navigation("RefreshTokens");
                 });
 #pragma warning restore 612, 618
         }

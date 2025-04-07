@@ -29,4 +29,3 @@ namespace revaly.auth.Application.Models
         public static ResultViewModel<T> Error(string message) => new(default, false, message);
     }
 }
-}
