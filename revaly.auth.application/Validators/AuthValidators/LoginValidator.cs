@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using revaly.auth.Application.Commands.LoginCommand;
+using revaly.auth.Application.Queries.LoginQuery;
 
-namespace revaly.auth.Application.Validators
+namespace revaly.auth.Application.Validators.AuthValidators
 {
-    public class LoginValidator : AbstractValidator<LoginCommand>
+    public class LoginValidator : AbstractValidator<LoginQuery>
     {
         public LoginValidator()
         {
