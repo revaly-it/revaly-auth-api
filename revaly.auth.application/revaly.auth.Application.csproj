@@ -7,7 +7,17 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="11.11.0" />
 		<PackageReference Include="MediatR" Version="12.4.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.3" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.7.0" />
+		<PackageReference Include="VaultService" Version="0.1.5" />
+		<PackageReference Include="VaultSharp" Version="1.17.5.1" />
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\revaly.auth.Domain\revaly.auth.Domain.csproj" />
 	</ItemGroup>
 
 </Project>
