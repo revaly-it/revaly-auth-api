@@ -24,6 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\revaly.auth.application\revaly.auth.Application.csproj" />
 	  <ProjectReference Include="..\revaly.auth.CrossCutting\revaly.auth.CrossCutting.csproj" />
 	</ItemGroup>
 
