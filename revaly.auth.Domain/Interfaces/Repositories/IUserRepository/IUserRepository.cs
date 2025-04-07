@@ -5,6 +5,7 @@ namespace revaly.auth.Domain.Interfaces.Repositories.IUserRepository
 {
     public interface IUserRepository
     {
+        Task<bool> UserExistsAsync(string email);
         Task<User> GetUserByIdAsync(int id);
         Task<User> GetUserByEmailAsync(string email);
         Task<IEnumerable<User>> GetAllUsersAsync();
