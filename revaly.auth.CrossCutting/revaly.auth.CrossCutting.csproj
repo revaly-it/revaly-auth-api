@@ -7,6 +7,8 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.3" />
+		<PackageReference Include="Microsoft.OpenApi" Version="1.6.23" />
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.3.efcore.9.0.0" />
 		<PackageReference Include="VaultService" Version="0.1.5" />
 		<PackageReference Include="VaultSharp" Version="1.17.5.1" />

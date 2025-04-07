@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using revaly.auth.Infrastructure.Context;
+using System.Text;
 using VaultService.Extensions;
 using VaultService.Interface;
 
@@ -13,7 +16,8 @@ namespace revaly.auth.CrossCutting.DependencyInjection
         {
             services
                 .AddVaultService(configuration)
-                .AddMySQLDatabase(configuration);
+                .AddMySQLDatabase(configuration)
+                .AddCors();
 
             return services;
         }
@@ -45,6 +49,44 @@ namespace revaly.auth.CrossCutting.DependencyInjection
             });
             return services;
         }
-        
+
+        private static IServiceCollection AddCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+            return services;
+        }
+
+        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+
+            services.AddOptions<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme)
+                .Configure<IVaultClient>((options, vaultService) =>
+                {
+                    var jwtSecretKey = configuration["KeyVaultSecrets:JwtSecret"]
+                        ?? throw new ArgumentNullException("JwtSecret is missing in Vault");
+
+                    var jwtSecret = vaultService.GetSecret(jwtSecretKey);
+
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecret)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
+            return services;
+        }
     }
 }
