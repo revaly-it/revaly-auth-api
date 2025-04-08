@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using revaly.auth.Application.Commands.UserCommand.UpdateUserCommand;
 using revaly.auth.Application.Models;
-using revaly.auth.Domain.Entities;
-using revaly.auth.Domain.Entities.Enums;
 using revaly.auth.Domain.Interfaces.IUnitOfWork;
 
 namespace revaly.auth.Application.Handlers.UserCommandHandler.UpdateUserCommandHandler
