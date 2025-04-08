@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using revaly.auth.API.OpenAPI;
 using revaly.auth.CrossCutting.DependencyInjection;
 using Scalar.AspNetCore;
 
@@ -11,7 +12,11 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // APIs + Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi("v1", options =>
+{
+    options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+});
+
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -49,7 +54,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.MapScalarApiReference();
+    app.MapScalarApiReference(options =>
+    {
+        options.Title = "Revaly Auth API";
+        options.Theme = ScalarTheme.DeepSpace;
+        options.DefaultHttpClient = new(ScalarTarget.CSharp, ScalarClient.HttpClient);
+        options.ShowSidebar = true;
+    });
 }
 
 app.UseHttpsRedirection();
