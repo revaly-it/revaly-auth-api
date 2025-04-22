@@ -39,8 +39,8 @@ namespace revaly.auth.CrossCutting.DependencyInjection
 
         private static IServiceCollection AddVaultService(this IServiceCollection services, IConfiguration configuration)
         {
-            var vaultAddress = configuration["KeyVault:Address"] ?? throw new ArgumentNullException("KeyVault Address is missing");
-            var vaultToken = configuration["KeyVault:Token"] ?? throw new ArgumentNullException("KeyVault Token is missing");
+            var vaultAddress = Environment.GetEnvironmentVariable("VAULT_ADDR") ?? throw new Exception("VAULT_ADDR not set");
+            var vaultToken = Environment.GetEnvironmentVariable("VAULT_TOKEN") ?? throw new Exception("VAULT_TOKEN not set");
 
             return services.AddVaultService(
                 vaultAddress: vaultAddress,

@@ -2,7 +2,6 @@
 
 # Esta fase é usada durante a execução no VS no modo rápido (Padrão para a configuração de Depuração)
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
-USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
@@ -12,19 +11,20 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["revaly.auth.api/revaly.auth.api.csproj", "revaly.auth.api/"]
-RUN dotnet restore "./revaly.auth.api/revaly.auth.api.csproj"
+COPY ["revaly.auth.API/revaly.auth.API.csproj", "revaly.auth.API/"]
+RUN dotnet restore "./revaly.auth.API/revaly.auth.API.csproj"
 COPY . .
-WORKDIR "/src/revaly.auth.api"
-RUN dotnet build "./revaly.auth.api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/revaly.auth.API"
+RUN dotnet build "./revaly.auth.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./revaly.auth.api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./revaly.auth.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # Esta fase é usada na produção ou quando executada no VS no modo normal (padrão quando não está usando a configuração de Depuração)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "revaly.auth.api.dll"]
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENTRYPOINT ["dotnet", "revaly.auth.API.dll"]

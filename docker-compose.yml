@@ -1,0 +1,18 @@
+﻿version: '3.8'
+
+services:
+  auth-api:
+    build:
+      context: .
+      dockerfile: revaly.auth.API/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - VAULT_TOKEN=${VAULT_TOKEN}
+      - VAULT_ADDR=http://vault:8200
+    networks:
+      - vault_default  
+
+networks:
+  vault_default:
+    external: true
